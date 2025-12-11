@@ -1,4 +1,5 @@
-// vera.js - The VERA Engine
+// If the cloud says 'live', turn off test mode. Otherwise, keep it safe (true).
+testMode: process.env.VERA_MODE !== 'live',// vera.js - The VERA Engine
 require('dotenv').config();
 const express = require('express');
 const smartcar = require('smartcar');
