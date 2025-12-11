@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA | Vehicle Risk Assessment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mirage: #0f172a;
+            --skeptic: #22c55e;
+            --text-grey: #94a3b8;
+        }
+        
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: var(--mirage);
+            /* NEW IMAGE: Dark Car Dashboard / Speedometer */
+            background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .vera-container {
+            max-width: 500px;
+            padding: 40px;
+            text-align: center;
+            /* Glassmorphism */
+            background: rgba(30, 41, 59, 0.6); 
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-shield {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 25px;
+            color: var(--skeptic);
+            filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.3));
+        }
+
+        h1 {
+            font-weight: 200; /* ExtraLight */
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            font-size: 3.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-grey);
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-verify {
+            background-color: var(--skeptic);
+            color: #064e3b;
+            font-weight: 600;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px -1px rgba(34, 197, 94, 0.2);
+        }
+
+        .btn-verify:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
+            color: white;
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="vera-container">
+        <svg class="logo-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+        </svg>
+
+        <h1>VERA</h1>
+        <p class="subtitle">Vehicle Electronic Risk Assessment<br>Secure Digital Handshake Protocol</p>
+
+        <a href="<%= authUrl %>" class="btn btn-verify rounded-pill">
+            Verify Vehicle
+        </a>
+
+        <div class="footer-text">
+            Trust • But • Verify
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" style="background: #0f172a;">
+<head>
+    <title>VERA Certificate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #0f172a; color: #f8fafc; font-family: sans-serif; }
+        .card-vera { background: #1e293b; border: 1px solid #334155; border-radius: 15px; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; border: 8px solid #22c55e; display: flex; align-items: center; justify-content: center; font-size: 4rem; font-weight: bold; margin: 0 auto; box-shadow: 0 0 30px rgba(34,197,94,0.2); }
+        .label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .value { font-size: 1.5rem; font-weight: 600; }
+    </style>
+</head>
+<body class="py-5">
+    <div class="container" style="max-width: 600px;">
+        <div class="text-center mb-4">
+            <h4 class="text-muted">OFFICIAL AUDIT CERTIFICATE</h4>
+        </div>
+
+        <div class="card-vera p-5 text-center mb-4">
+            <div class="score-circle mb-3"><%= audit.score %></div>
+            <h2 class="text-<%= audit.score > 80 ? 'success' : 'danger' %>"><%= audit.status %></h2>
+            <p class="text-muted">VERA Condition Index</p>
+            <% if (audit.deductions.length > 0) { %>
+                <div class="alert alert-dark mt-3 text-start"><% audit.deductions.forEach(d => { %> <div>⚠ <%= d %></div> <% }) %></div>
+            <% } else { %>
+                <div class="text-success mt-3 fw-bold">✓ NO ACTIVE RISK FACTORS DETECTED</div>
+            <% } %>
+        </div>
+
+        <div class="card-vera p-4">
+            <div class="row g-4">
+                <div class="col-6">
+                    <div class="label">Odometer (ECU Verified)</div>
+                    <div class="value"><%= data.odometer ? Math.round(data.odometer.distance) : '---' %> mi</div>
+                </div>
+                <div class="col-6">
+                    <div class="label">Oil Life Remaining</div>
+                    <div class="value text-<%= data.oil && data.oil.lifeRemaining < 0.2 ? 'danger' : 'success' %>">
+                        <%= data.oil ? Math.round(data.oil.lifeRemaining * 100) : '--' %>%
+                    </div>
+                </div>
+                <div class="col-12 border-top border-secondary pt-3">
+                    <div class="label">Vehicle</div>
+                    <div class="text-white"><%= vehicle ? vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model : 'Unknown' %></div>
+                    <div class="text-muted small">VIN: <%= vehicle ? vehicle.vin : 'N/A' %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
